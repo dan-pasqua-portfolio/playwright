@@ -1,7 +1,6 @@
 import { type Locator, type Page } from '@playwright/test';
-import { BasePage } from './pages/base/BasePage';
-import { User } from './data/users';
-import 'dotenv';
+import { BasePage } from './base/BasePage';
+import { User } from '../data/users';
 
 export class LoginPage extends BasePage {
   readonly usernameInput: Locator;

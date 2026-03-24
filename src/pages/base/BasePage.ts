@@ -1,5 +1,5 @@
 import { type Locator, type Page } from "@playwright/test";
-import { safeClick, SafeClickOptions } from '@helpers/safeClick';
+import { safeClick, SafeClickOptions } from '../../helpers/safeClick';
 
 export abstract class BasePage {
   protected readonly page: Page;

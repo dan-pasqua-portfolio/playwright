@@ -5,11 +5,26 @@ export default class StepLoggerReporter implements Reporter {
     test: TestCase,
     result: TestResult,
     step: TestStep
-  )
-  {
+  ): void {
     if (step.category === 'test.step') {
       const depth = this.getDepth(step);
-      console.log(`${'  '.repeat(depth)}STEP: ${step.title}`);
+      const indent = '  '.repeat(depth);
+
+      console.log(`${indent}${step.title}`);
+    }
+  }
+
+  onStepEnd(
+    test:   TestCase,
+    result: TestResult,
+    step:   TestStep,
+  ): void {
+    if (step.category === 'test.step' && step.error) {
+      const depth  = this.getDepth(step);
+      const indent = '  '.repeat(depth);
+
+      console.error(`${indent}FAILED: ${step.title}`);
+      console.error(`${indent}${step.error.message}`);
     }
   }
   
